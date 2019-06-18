@@ -33,6 +33,13 @@
     
     // 1. Filter the list of inventors for those who were born in the 1500's
     const fifteen = inventors.filter(inventor => inventor.year > 1500 && inventor.year < 1600)
+    //
+    //1B. Filter list of people for those whose last names start with Bi
+    const filteredPeople = people.filter(person => {
+      const lastName = person.split(' ')[0]
+      if (lastName.startsWith('Bi')) {return lastName}
+    })
+    console.log(filteredPeople);
     //console.table(fifteen);
     // Array.prototype.map()
     
