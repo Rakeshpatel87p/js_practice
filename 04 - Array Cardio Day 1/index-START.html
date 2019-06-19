@@ -45,6 +45,16 @@
     
     // 2. Give us an array of the inventors' first and last names
     const names = inventors.map(inventor => `${inventor.last}, ${inventor.first}`);
+    const inventorsByAge = inventors
+      .map(inventor => {
+        const yearsLived = inventor.passed - inventor.year;
+        return {
+          ...inventor,
+          age: yearsLived
+        }
+      })
+      .sort((a,b) => a.year > b.year ? 1 : -1)
+    console.log(inventorsByAge);
     //console.table(names);
     // Array.prototype.sort()
     
