@@ -12,7 +12,7 @@
 
 	window.addEventListener('keyup', (e) => {
 		pressed.push(e.key);
-		//Go from back to front
+		//Go from back to front by adding negative, go back as far as number of characs we're looking for
 		pressed.splice(-secretCode.length - 1, pressed.length - secretCode.length)
 		if (pressed.join('').includes(secretCode)) {
 			cornify_add();
