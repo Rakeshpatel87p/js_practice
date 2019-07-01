@@ -13,7 +13,7 @@
     const players = ['Wes', 'Sarah', 'Ryan', 'Poppy'];
 
     // and we want to make a copy of it.
-
+    players.splice(); //how to make a copy. 
     // You might think we can just do something like this:
 
     // however what happens when we update that array?
@@ -29,9 +29,12 @@
     // one way
 
     // or create a new array and concat the old one in
-
+    const play5 = [].concat(players)
+    
+    play5.push('Russ Goldstein');
+    console.log(play5);
     // or use the new ES6 Spread
-
+    const play2 = [...players];
     // now when we update it, the original one isn't changed
 
     // The same thing goes for objects, let's say we have a person object
@@ -43,9 +46,27 @@
     };
 
     // and think we make a copy:
+    //Only goes 1 level deep
+    const cap2 = Object.assign({}, person, {number: 100});
 
+    console.log(person)
+    console.log(cap2)
+
+    const cap3 = {...person, age: 52}
+
+    console.log(cap3)
+
+    const wes = {
+      age: 52,
+      number: 100,
+      social: {
+        twitter: 'coolman', //Object.assign will not go this deep
+        fb: 'holler'
+      }
+    }
     // how do we take a copy instead?
-
+    //Poor mans deep clone
+    console.log(`check out poor man's deep clonse ${JSON.parse(JSON.stringify(wes))}`)
     // We will hopefully soon see the object ...spread
 
     // Things to note - this is only 1 level deep - both for Arrays and Objects. lodash has a cloneDeep method, but you should think twice before using it.
