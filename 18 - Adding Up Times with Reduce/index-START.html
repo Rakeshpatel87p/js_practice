@@ -182,6 +182,28 @@
     </li>
   </ul>
 <script>
+
+  //Get DOM Elements
+  const liElems = Array.from(document.querySelectorAll('.videos li'));
+  //console.log(liElems);
+  const seconds = 
+    liElems
+      .map((li) => li.dataset.time)
+      .map((timeCode) => {
+        const [mins, secs] = timeCode.split(':').map(parseFloat);
+        return (mins * 60) + secs
+      })
+      .reduce((total, vidSecs) => total + vidSecs)
+
+      let secondsLeft = seconds;
+      const hours = Math.floor(secondsLeft / 3600);
+      //Mod symbol returns remainder after dividing by number
+      secondsLeft = secondsLeft % 3600
+
+      const mins = Math.floor(secondsLeft / 60)
+      secondsLeft = secondsLeft % 60
+
+  console.log(hours, mins, secondsLeft);
 </script>
 </body>
 </html>
